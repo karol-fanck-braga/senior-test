@@ -16,3 +16,6 @@ class Task(models.Model):
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='in_progress')
     priority = models.IntegerField(choices=(PRIORITY_CHOICES), default=1)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
