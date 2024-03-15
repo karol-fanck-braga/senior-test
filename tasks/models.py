@@ -1,7 +1,7 @@
 from django.db import models
 from django.db import models
 
-class Tasks(models.Model):
+class Task(models.Model):
     STATUS = (
         ('todo', 'To Do'),
         ('in_progress', 'In Progress'),
