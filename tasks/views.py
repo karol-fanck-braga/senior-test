@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from .models import Task
 from .serializers import TaskSerializer
 from django_filters.rest_framework  import DjangoFilterBackend
-
+from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
 
 class TaskListCreate(generics.ListCreateAPIView):
@@ -13,8 +13,10 @@ class TaskListCreate(generics.ListCreateAPIView):
     
     queryset = Task.objects.all()
 
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+
     filterset_fields = ['status', 'priority']
+    ordering_fields = ['created_at']    
     
     
 class TaskRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
